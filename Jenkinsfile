@@ -14,17 +14,14 @@ node('master') {
             docker
                 .image('jenkins-agent-ubuntu')
                 .inside('--volumes-from jenkins-master') {
-                    echo "Write your copy build results code here"
+                    sh "bash ./build.sh;"
                 }
         }
         stage('UI unit tests') {
             docker
                 .image('jenkins-agent-ubuntu')
                 .inside('--volumes-from jenkins-master') {
-                    sh """
-                        cd ./tests;
-                        bash ./run.sh;
-                    """
+                    sh "bash ./build.sh;"
                 }
         }
     }
