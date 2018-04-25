@@ -5,14 +5,14 @@ node('master') {
         }
         stage('Build') {
             docker
-                .image('jenkins-agent-ubuntu')
+                .image('jenkinsci/slave')
                 .inside('--volumes-from jenkins-master') {
                     sh "bash ./build.sh;"
                 }
         }
         stage('Copy build results') {
             docker
-                .image('jenkins-agent-ubuntu')
+                .image('jenkinsci/slave')
                 .inside('--volumes-from jenkins-master') {
                     sh """
                         sshpass -plol scp \
@@ -23,7 +23,7 @@ node('master') {
         }
         stage('UI unit tests') {
             docker
-                .image('jenkins-agent-ubuntu')
+                .image('jenkinsci/slave')
                 .inside('--volumes-from jenkins-master') {
                     sh """
                         cd ./tests;
