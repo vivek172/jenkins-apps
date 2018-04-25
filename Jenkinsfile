@@ -14,11 +14,7 @@ node('master') {
             docker
                 .image('jenkins-agent-ubuntu')
                 .inside('--volumes-from jenkins-master') {
-                    sh """
-                        sshpass -plol scp \
-                            "${WORKSPACE}/build/*.tar.gz" \
-                            "backup@1.1.1.1:/build";
-                    """
+                    echo "Write your copy build results code here"
                 }
         }
         stage('UI unit tests') {
