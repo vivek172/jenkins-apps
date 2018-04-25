@@ -7,7 +7,7 @@ node('master') {
             docker
                 .image('jenkins-agent-ubuntu')
                 .inside('--volumes-from jenkins-master') {
-                    echo "Run build scripts here"
+                    sh "bash ./build.sh;"
                 }
         }
         stage('Copy build results') {

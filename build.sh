@@ -1,2 +1,1 @@
-cd ./hello-world-java-master
-/usr/bin/javac HelloWorld.java
+echo "Run build commands here"
